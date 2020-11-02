@@ -225,9 +225,9 @@ SOLID_I18N_USE_REDIRECTS = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_HOST_USER = 'k-work31@yandex.ru'
-EMAIL_HOST_PASSWORD = 'afe390ru92dima'
-EMAIL_TO = 'kotik.dmitrj1992@gmail.com'
+EMAIL_HOST_USER = '*****@yandex.ru'
+EMAIL_HOST_PASSWORD = '******'
+EMAIL_TO = '******1992@gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
