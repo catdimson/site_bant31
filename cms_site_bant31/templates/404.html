@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Страница не найдена{% endblock title %}</title>
+    <link href="{% static 'custom/other-styles.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="text-error">
+        <h1>Страница не найдена</h1>
+        <p><a href="/">Вернуться на главную</a></p>
+    </div>
+</body>
+</html>

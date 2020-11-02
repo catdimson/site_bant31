@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Заказ подтверждаен{% endblock title %}</title>
+    <link href="{% static 'custom/other-styles.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="text-successful">
+        <h1>Заказ подтвержден</h1>
+        <p class="text-manager">Наш менеджер скоро свяжется с Вами.</p>
+        <p><a href="/">Вернуться на главную</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Gabriela&subset=cyrillic');
+/*--/ ERROR 404 /--*/
+html,
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+}
+body {
+  background: url('/static/img/fone.jpg');
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.text-error,
+.text-successful {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.text-successful h1 {
+  margin-bottom: 0;
+}
+.text-successful .text-manager {
+  margin: 10px 0 30px;
+  font-size: 22px;
+}
+.text-successful p > a {
+  display: inline-block;
+}
+h1 {
+  font-size: 55px;
+}
+p a {
+  background-color: #444a50;
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+  padding: 10px 20px;
+}
+p a:hover,
+p a:focus {
+  opacity: 0.8;
+}
+@media (max-width: 768px) {
+  h1 {
+    font-size: 35px;
+  }
+  p a {
+    font-size: 20px;
+  }
+}

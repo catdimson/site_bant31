@@ -1,0 +1,11 @@
+[program:new_site_asmobel]
+command = /home/projects/site_bant31/bin/gunicorn cms_site_bant31.wsgi:application -c /home/projects/site_bant31/project/cms_site_bant31/gunicorn.conf.py
+directory = /home/projects/site_bant31/project
+environment = PATH="/home/projects/site_bant31/bin"
+user = nginx
+autostart = true
+autorestart = true
+redirect_stderr = True
+stdout_logfile = /var/log/supervisord/site_bant31.log
+stdout_logfile_maxbytes = 10MB
+debug = True

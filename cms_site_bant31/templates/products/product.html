@@ -1,0 +1,231 @@
+{% load static %}
+<!doctype html>
+<html>
+    <head>
+        <title>{% block title %}{% if product.seo_title %}{{ product.seo_title }}{% else %}{{ product.name }}{% endif %}{% endblock title %}</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta name="description" content="{% if product.seo_meta_description %}{{ product.seo_meta_description }}{% endif %}">
+		<meta name="keywords" content="{% if product.seo_meta_keywords %}{{ product.seo_meta_keywords }}{% endif %}">
+
+        <link rel="icon" href="{% static 'icons/favicon.ico' %}" type= "image/x-icon">
+        <link rel="shortcut icon" href="{% static 'icons/favicon.ico' %}" type="image/x-icon">
+        <link rel="apple-touch-icon" href="{% static 'icons/touch-icon.png' %}">
+        <!--bootstrap-->
+        {% comment %}<link href="{% static 'bootstrap3/fonts/fonts.css' %}" rel="stylesheet" type="text/css" media="all">{% endcomment %}
+        <link href="{% static 'bootstrap3/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+
+        <!--font awesome-->
+        <link href="{% static 'font-awesome-4.7.0/css/font-awesome.css' %}" rel="stylesheet" type="text/css">
+
+        <!--custom-->
+        <link href="{% static 'custom/custom.css' %}" rel="stylesheet" type="text/css">
+		<link href="{% static 'custom/style_goods.css' %}" rel="stylesheet" type="text/css">
+
+        <!--jQuery-->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.js "></script>
+		<script type="text/javascript" src="{% static 'bootstrap3/js/bootstrap.min.js'%}"></script>
+
+    </head>
+	<body>
+		<header><!--Шапка сайта-->
+			<div class="container">
+				<div class="row header-top">
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+						<div class="logo">
+							<a href="/">
+								<img class="filer_image " alt="logo.png" src="/media/filer_public_thumbnails/filer_public/3e/2a/3e2a8eb9-73d2-48e1-9033-dbeffcd29a02/logo.png__184x150_q85_crop_subsampling-2_upscale.png">
+							</a>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-5 col-lg-5">
+						<h3>Заказать букет<br>+7 (980) 526 50 56</h3>
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 right-col">
+						<div class="connection-button-wrapper"><a href="/kontakty/" class="btn btn-default btn-md" role="button" target="_self">Связаться с нами</a></div>
+						<div class="social-links">
+							<ul class="list-inline">
+								<li><a href="https://vk.com/bant31" class="filer_image_link"><img class="filer_image " alt="icon-vk.png" src="/media/filer_public_thumbnails/filer_public/51/af/51afe75c-5c22-4661-ad98-5c5462fa7095/icon-vk.png__49x48_q85_crop_subsampling-2_upscale.png"></a></li>
+								<li><a href="http://instagram.com/cvety_belgorod31" class="filer_image_link"><img class="filer_image " alt="icon-inst.png" src="/media/filer_public_thumbnails/filer_public/34/6a/346a62c1-6963-4581-95a5-367a28c2dbc9/icon-inst.png__48x50_q85_crop_subsampling-2_upscale.png"></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div role="navigation" class="navbar navbar-inverse navbar-static-top">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li class=""><a href="/">Главная</a></li>
+							<li class=""><a href="/o-nas/">О нас</a></li>
+							<li class=""><a href="/akcii-i-skidki/">Акции и скидки</a></li>
+							<li class=""><a href="/kontakty/">Контакты</a></li>
+							<li class="active dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Каталог<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li class="">
+										 <a href="/goods/goods_flowers/" class="{% if product_images_after_filter.0.product.category.id == '1' %}link_active{% endif %}">Цветы</a>
+									</li>
+									<li class="">
+										 <a href="/goods/goods_bolls/">Шары</a>
+									</li>
+									<li class="">
+										 <a href="/goods/goods_baskets/">Корзины</a>
+									</li>
+									<li class="">
+										 <a href="/goods/goods_boxes/">Коробки</a>
+									</li>
+									<li class="">
+										 <a href="/goods/goods_additional/">Доп. товары</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div><!--Меню-->
+		</header><!--/header-->
+
+
+		<div class="wrapper-product-details">
+			{% block content %}
+			<div class="container page">
+				<h1 class="page-title">{% if product.title_h1 %}{{ product.title_h1 }}{% else %}{{ product.name }}{% endif %}</h1>
+
+				<div class="row">
+					<div class="col-md-4"><!--/productimage-модель-->
+						<div class="product-image-item">
+							{% for image_item in product.productimage_set.all %}
+								<img src="{{ image_item.image.url }}" alt="{{ image_item.alt_text }}" class="img-responsive"><!--/в одной интерации image_item есть поле image-->
+							{% endfor %}
+						</div>
+					</div><!--/product-image-->
+					<div class="col-md-4">
+						<!--<ul class="nav nav-tabs" role="tablist">
+							<li role="presentation" class="active">
+								<a href="#description" aria-controls="home" role="tab" data-toggle="tab">Описание</a>
+							</li>
+							<li role="presentation">
+								<a href="#delivery" aria-controls="delivery" role="tab" data-toggle="tab">Доставка</a>
+							</li>
+							<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+							<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+						</ul>
+						<div class="tab-content product-description">
+							<div role="tabpanel" class="tab-pane active" id="description">
+								{{ product.description }}
+							</div>
+							<div role="tabpanel" class="tab-pane" id="delivery">
+								<h3>Как мы осуществляем доставку</h3>
+                                <h4>Цена: {{ product.price }} руб.</h4>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="messages">...</div>
+							<div role="tabpanel" class="tab-pane" id="settings">...</div>
+						</div>-->
+
+						<!--/seo text-->
+						{% if product.seo_hidden_title_h2 %}<h2 class="hidden">{{ product.seo_hidden_title_h2 }}</h2>{% endif %}
+						{% if product.seo_hidden_text_after_h2 %}<p class="hidden">{{ product.seo_hidden_text_after_h2 }}</p>{% endif %}
+						{% if product.text_blockquote %}<blockquote class="hidden">{{ product.text_blockquote }}</blockquote>{% endif %}
+						{% if product.seo_hidden_title_h3 %}<h3 class="hidden">{{ product.seo_hidden_title_h3 }}</h3>{% endif %}
+						{% if product.seo_hidden_text_after_h3 %}<p class="hidden">{{ product.seo_hidden_text_after_h3 }}</p>{% endif %}
+
+						<div class="product-description">
+							{% if product.discount %}
+								<h4>Старая цена: {{ product.price }}</h4>
+								<h4 style="color: red">Цена со скидкой: {{ product.discount }} руб.</h4>
+							{% endif %}
+							<p class="description-title">Описание товара:</p>
+							<p>
+								{{ product.description }}
+							</p>
+                            {% comment %}{% if product.category.id == '3' %}{% endcomment %}
+                            {% if product.category.id == 3 %}
+                                <div class="add-info">
+                                    <h5>На Ваш выбор укажите в комментарии к заказу</h5>
+                                    <p>Цвет коробки:</p>
+                                    <ul>
+                                        <li>Белый</li>
+                                        <li>Голубой</li>
+                                        <li>Розовый</li>
+                                        <li>Любовная тематика</li>
+                                    </ul>
+                                    <p>Цвет роз:</p>
+                                    <ul>
+                                        <li>Красный</li>
+                                        <li>Белый</li>
+                                        <li>Голубой</li>
+                                        <li>Розовый</li>
+                                        <li>Желтый</li>
+                                    </ul>
+                                </div>
+                            {% endif %}
+						</div>
+					</div><!--/product-secription-->
+
+                    <div class="col-md-4">
+						<div class="product-order-form">
+							<h2>Закажи букет</h2>
+							<form action="" method="post" class="form-inline text-center">{% csrf_token %}
+								{% comment %}<div class="form-group">
+									<label>Ваш email:</label>
+									<input type="text" name="{{ form.email.name }}" class="form-control">
+								</div>{% endcomment %}
+								<div class="form-group">
+									<label>Ваше имя:</label>
+									<input type="text" name="{{ form.name.name }}" class="form-control">
+								</div>
+								<div class="form-group">
+									<label>Ваш телефон:</label>
+									<input type="number" name="{{ form.phone.name }}" class="form-control">
+								</div>
+                                <div class="form-group">
+                                    <label>Комментарий</label>
+                                    <textarea class="textarea" name="{{ form.comments.name }}" rows="3"></textarea>
+                                </div>
+								<button type="submit" class="btn btn-primary">Отправить</button>
+							</form>
+						</div>
+                    </div><!--/product-order-form-->
+				</div>
+			</div>
+			{% endblock content %}
+		</div><!--/base content-->
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-4 col-md-5 col-lg-5">
+						<h3>+7 (980) 526 50 56</h3>
+						<p><a href="mailto:Info@bant.ru">Info@bant.ru</a></p>
+					</div>
+
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-links list-unstyled">
+						<ul>
+							<li><a href="/goods/goods_flowers/">Цветы</a></li>
+							<li><a href="/goods/goods_baskets/">Корзины</a></li>
+							<li><a href="/goods/goods_boxes/">Коробки</a></li>
+							<li><a href="/goods/goods_bolls/">Шары</a></li>
+							<li><a href="/goods/goods_additional/">Дополнительные товары</a></li>
+						</ul>
+					</div>
+
+					<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 social-links">
+						<h3>Мы в соц. сетях:</h3>
+						<ul class="list-inline">
+							<li><a href="https://vk.com/bant31" class="filer_image_link"><img class="filer_image " alt="icon-vk.png" src="/media/filer_public_thumbnails/filer_public/51/af/51afe75c-5c22-4661-ad98-5c5462fa7095/icon-vk.png__49x48_q85_crop_subsampling-2_upscale.png"></a></li>
+							<li><a href="http://instagram.com/cvety_belgorod31" class="filer_image_link"><img class="filer_image " alt="icon-inst.png" src="/media/filer_public_thumbnails/filer_public/34/6a/346a62c1-6963-4581-95a5-367a28c2dbc9/icon-inst.png__48x50_q85_crop_subsampling-2_upscale.png"></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer><!--/footer-->
+	</body>
+</html>
